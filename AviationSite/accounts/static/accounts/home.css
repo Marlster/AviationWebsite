@@ -1,0 +1,193 @@
+* {box-sizing:border-box}
+
+body, html {margin: 0; padding: 0; background-color: #111511}
+
+/* navbar stuff */
+
+li {
+  display: inline;
+}
+
+.navbar-buttons {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+.navbar-buttons:last-child {
+	border-right: none;
+    border-left: 1px solid #bbb;
+    right: 0;
+}
+
+.navbar-options {
+	display: block;
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.navbar-options:hover {
+	background-color: #222;
+    color: white;
+}
+
+.navigation-bar {
+	position: relative;
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #444944;
+    overflow: hidden;
+  }
+
+/* Wrapper so that the nav bar is on top of the slideshow */
+.navbar-slideshow-wrapper {
+	position: relative;
+}
+
+/* slideshow stuff */
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 45%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background-color: rgba(0,0,0,0.1);
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  opacity: 0.9;
+}
+
+.dot:hover {
+  background-color: #717171;
+  opacity: 0.9;
+}
+
+.dot-background {
+	border-radius: 20%/50%;
+	width: 71px;  /* change this if more pics are added to slideshow */
+    height: 23px;
+    background-color: #111;
+    position: absolute;
+	top: 95%;
+	left: 50%;
+	opacity: 0.5;
+	text-align:center;
+}
+
+.slideshow-dots {
+	position: absolute;
+	top: 4px; 
+	left: 3px; /* might need to change this too */
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* text & pic sections stuff */
+.text-section {
+  color: #eee;
+  padding-top: 20px;
+  font-size: 1em;
+  padding: 8px 16px;
+  width: 70%;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  text-align: center;
+  background-color: #333733;
+}
+
+.text-image-bit {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.title-anchor-text {
+  font-size: 2em;
+  color: #eee;
+}
+
+img.image-section {
+  object-fit: cover;
+  max-height: 50vh;
+  max-width: 30%;
+  vertical-align: top;
+  display: inline;
+}
+
+.left {
+  flex: 1;
+  margin: 3px;
+}
+
+.right {
+  flex: 1;
+  margin: 3px;
+}
+
+/* footer stuff */
+footer {
+  color: #eee;
+  margin-left: 20px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% load static %}
+<title>Member Page</title>
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}"> 
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+	<ul class = "navigation-bar">
+		<li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="signups">Session Sign Ups</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="#trials">Info</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Settings</a></li>
+		<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
+	</ul>
+{% endif %}
+<img src="{% static "accounts/gliders1.jpg" %}" alt="Background pic" class = "loginimage">
+<div class="infobox">
+	{% if user.is_authenticated %}
+		<h1>Hi {{ user.username }}!</h1>
+		<h1>Welcome to the Member's Area!</h1>
+	{% else %}
+		<p>You are not logged in</p>
+		<a href="{{ HTTP_HOST }}/accounts/login/" class = "linkbutton">login</a>
+	{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% load static %}
+<title>Member's Login</title>
+<link rel="stylesheet" type="text/css" href="{% static 'registration/login.css' %}"> 
+{% endblock %}
+
+{% block body %}
+<img src="{% static "registration/standing5.jpeg" %}" alt="Background pic" class = "loginimage">
+<div class="loginform">
+	<form method="post">
+	  	<div class="imgcontainer">
+	    	<img src="{% static "registration/cropped-logo-final.png" %}" alt="Aviation Society" class="logo">
+	  	</div>
+	  	<div class="container">
+	    	{% csrf_token %}
+		  		{{ form.as_p }}
+	    	<button type="submit">Login</button>
+	    	<label>
+	      		<input type="checkbox" checked="checked" name="remember"> Remember me
+	    	</label>
+	    	<a href="#" class="forgotbtn">Forgot password?</a>
+	  	</div>
+	</form>
+	<ul>
+<!-- 			{% for number in numbers %}
+		<li>{{ number }}</li>
+		{% endfor %} -->
+	</ul>
+</div>
+{% endblock %}
