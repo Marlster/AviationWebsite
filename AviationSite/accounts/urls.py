@@ -11,8 +11,6 @@ urlpatterns = [
     # home redirects to members home page
     url(r'^home$', views.membershome),
     # signup redirects to gliding signup page after a signup
-    url(r'^signup$', views.signup),
-    # signup redirects to gliding signup page before a signup
     url(r'^signuppage$', views.signuppage),
     # a blank url redirects to the main home page
     url(r'^$', RedirectView.as_view(url='home/'))

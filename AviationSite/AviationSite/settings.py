@@ -127,3 +127,5 @@ LOGIN_REDIRECT_URL = '/account/home'
 # NOTE: for some reason if i name the home/ path and use that name it doesn't work. IDK why
 LOGOUT_REDIRECT_URL = 'home'
 
+# Used to get the profile of a user
+AUTH_PROFILE_MODULE = 'user_profile.UserProfile'
