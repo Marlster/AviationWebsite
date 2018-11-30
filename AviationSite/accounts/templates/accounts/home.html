@@ -16,7 +16,7 @@
 			<li class = "navbar-buttons"><a class = "navbar-options" href="#join-us">Join Us</a></li>
 			<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Gallery</a></li>
 			{% if user.is_authenticated %}
-			<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/account/">Member's Area</a></li>
+			<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/account/home">Member's Area</a></li>
 			{% else %}
 			<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/login">Member's Area</a></li>
 			{% endif %}

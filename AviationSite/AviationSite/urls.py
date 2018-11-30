@@ -18,9 +18,15 @@ from django.urls import path, include
 from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
-    path('home/', include('accounts.urls')),
+    # displays a static home page
+    path('home/', TemplateView.as_view(template_name='accounts/home.html')),
+    # redirects to the built in accounts module (which lets users login/logout)
     path('accounts/', include('django.contrib.auth.urls')),
-    path('account/', TemplateView.as_view(template_name='accounts/memberpage.html'), name='memberAccount'),
+    # redirects to the urls in the account app
+    path('account/', include('accounts.urls')),
+    # used for the admin portal
     path('admin/', admin.site.urls),
-    path('', RedirectView.as_view(url='/home/'), name='home'),
+    # blank url redirects as home
+    path('', RedirectView.as_view(url='/home/'), name='home')
 ]
+# TemplateView.as_view(template_name='accounts/memberpage.html'

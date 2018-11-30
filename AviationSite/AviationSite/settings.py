@@ -121,7 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # redirects user on successful login
-LOGIN_REDIRECT_URL = 'memberAccount'
+LOGIN_REDIRECT_URL = '/account/home'
 
 # redirects user on logout
 # NOTE: for some reason if i name the home/ path and use that name it doesn't work. IDK why
