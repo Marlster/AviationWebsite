@@ -15,25 +15,27 @@ def membershome(request):
 
 
 def signuppage(request):
-    # res = urlopen('http://just-the-time.appspot.com/')
-    # result = res.read().strip()
-    # result_str = result.decode('utf-8')
-    # year = int(result_str[:4])
-    # month = int(result_str[5:7])
-    # day = int(result_str[8:10])
-    # futureSessions = GlidingSession.objects.filter(date__gte=datetime.date(year,month,day)).order_by('date')
     # processes form data if its a POST request
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST,user=request.user)
         if form.is_valid():
             newSignup = form.save(commit=False)
             newSignup.member = request.user.profile
             newSignup.save()
             # TODO change this to redirect to a "successful signup" page
             return redirect('/account/home')
+    # otherwise just returns the form
     else:
-        form = SignupForm()
-    args = {'form': form}
+        form = SignupForm(user=request.user)
+    # also gets currently signed up to sessions that aren't cancelled
+    currentSessions = GlidingSession.objects.filter(attendees__user=request.user).filter(is_cancelled=False)
+    sessions = []
+    for session in currentSessions:
+        drivers = (session.glidingsignup_set.filter(is_driver=True))
+        others = (session.glidingsignup_set.exclude(is_driver=True))
+        date = (session.date)
+        sessions.append([drivers,others,date])
+    args = {'form': form, 'sessions': sessions}
     return render(request, 'accounts/glidingsignup.html',args)
 
 def userdetails(request):

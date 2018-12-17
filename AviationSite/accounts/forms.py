@@ -4,12 +4,14 @@ from .models import GlidingSignup, GlidingSession
 from urllib.request import urlopen
 import datetime
 
+# make sure to pass the user as an argument so that it can be used to filter the results
 class SignupForm(forms.ModelForm):
     class Meta:
         model = GlidingSignup
         fields = ('session',)
 
     def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user',None)
         super(SignupForm, self).__init__(*args, **kwargs)
         # gets current date/time from the web
         # NOTE: may break if the website it gets the time from goes down (or changes format)
@@ -25,7 +27,8 @@ class SignupForm(forms.ModelForm):
         qs = qs.filter(is_cancelled=False)
         # checks each session has a free space
         qs = qs.annotate(num_attendees=Count('attendees')).filter(num_attendees__lt=F('max_attendees'))
-        # TODO checks that the user hasn't signed up to it already
+        # hecks that the user hasn't signed up to it already
+        qs = qs.exclude(attendees__user=self.user)
         # orders the sessions by date
         qs = qs.order_by('date') 
         # returns the queryset of sessions to be used as the fields of the form
