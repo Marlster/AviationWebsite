@@ -16,6 +16,8 @@ def membershome(request):
 
 def signuppage(request):
     # processes form data if its a POST request
+    if not request.user.is_authenticated:
+        return render(request, 'accounts/memberpage.html')
     if request.method == 'POST':
         form = SignupForm(request.POST,user=request.user)
         if form.is_valid():
@@ -39,4 +41,6 @@ def signuppage(request):
     return render(request, 'accounts/glidingsignup.html',args)
 
 def userdetails(request):
+    if not request.user.is_authenticated:
+        return render(request, 'accounts/memberpage.html')
     return render(request, 'accounts/userdetails.html')

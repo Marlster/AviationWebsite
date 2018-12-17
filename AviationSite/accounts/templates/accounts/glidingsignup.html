@@ -5,79 +5,46 @@
 <title>Gliding Sign Up</title>
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}">
 {% endblock %}
-
-{% if user.is_authenticated %}
-	<div style="margin-left: 8%; margin-right: 8%; height: 100px">
-		<div style="z-index: 2; position: absolute; margin: auto; padding: 20px 0">
-			<a href="{{ HTTP_HOST }}/home/">
-				<img src="{% static "registration/cropped-logo-final.png" %}" alt="AvSoc" class="logo" height=100px>
-			</a>
-		</div>
-		<div style="margin: auto; padding: 50px 0; padding-left: 10%">
-			{% block navbar %}
-			<ul class = "navigation-bar">
-				<li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
-				<li class = "navbar-buttons"><a class = "navbar-options" href="signuppage">Gliding Sessions</a></li>
-				<li class = "navbar-buttons"><a class = "navbar-options" href="trials">Info</a></li>
-				<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Settings</a></li>
-				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
-			</ul>
-			{% endblock %}
-		</div>
-	</div>
-{% endif %}
+{% block navbar %}
+<ul class = "navigation-bar">
+	<li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
+	<li class = "navbar-buttons"><a class = "navbar-options" href="signuppage">Gliding Sessions</a></li>
+	<li class = "navbar-buttons"><a class = "navbar-options" href="trials">Info</a></li>
+	<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Settings</a></li>
+	<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
+</ul>
+{% endblock %}
 {% block body %}
 <img src="{% static "accounts/gliders1.jpg" %}" alt="Background pic" class = "loginimage">
 <div class="infobox">
-	{% if user.is_authenticated %}
-		<h1>Sign Ups:</h1>
-		<br>
-		<p> Your Sessions: </p>
-		{% for session in sessions %}
-			<h2>{{ session.2 }}</h2>
-			<p>Meeting Location: Outiside the Union</p>
-			<p>Time: 07:00 AM</p>
-			{% for driver in session.0 %}
-				<p>Driver: {{ driver.member.user.first_name }}</p>
-			{% endfor %}
-			<p>Attendees:
-			{% for signup in session.1 %}
-				{{ signup.member.user.first_name }},
-			{% endfor %}
-			</p>
+	<h1>Sign Ups:</h1>
+	<br>
+	<p> Your Sessions: </p>
+	{% for session in sessions %}
+		<h2>{{ session.2 }}</h2>
+		<p>Meeting Location: Outiside the Union</p>
+		<p>Time: 07:00 AM</p>
+		{% for driver in session.0 %}
+			<p>Driver: {{ driver.member.user.first_name }}</p>
 		{% endfor %}
-		<br>
-		<p> Upcoming Sessions: </p>
-		<div class = "signupform">
-			<form action="/account/signuppage" method="post">
-				{% csrf_token %}
-				{{ form }}
-				<br>
-				<label for="signup">Sign up: </label>
-				<input id="signup" type="submit" value="Sign Up">
-			</form>
-		</div>
-		<br>
-		<p> Past Sessions:</p>
-	{% else %}
-		<p>You are not logged in</p>
-		<a href="{{ HTTP_HOST }}/accounts/login/" class = "linkbutton">login</a>
-	{% endif %}
+		<p>Attendees:
+		{% for signup in session.1 %}
+			{{ signup.member.user.first_name }},
+		{% endfor %}
+		</p>
+	{% endfor %}
+	<br>
+	<p> Upcoming Sessions: </p>
+	<div class = "signupform">
+		<form action="/account/signuppage" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<br>
+			<label for="signup">Sign up: </label>
+			<input id="signup" type="submit" value="Sign Up">
+		</form>
+	</div>
+	<br>
+	<p> Past Sessions:</p>
 </div>
 {% endblock %}
-
-<!-- {% for session in futureSessions %}
-	{% if not session.is_cancelled%}
-	<label>{{session.date}} Session</label>
-	<input type = "radio" name = "session">
-	{% endif %}
-{% endfor %} -->
-<!-- {% for field in form %}
-	<div class="session">
-		{{ field.errors }}
-		{{ field.label_tag }} {{ field }}
-		{% if field.help_text %}
-		<p class="help">{{ field.help_text|safe }}</p>
-		{% endif %}
-		</div>
-{% endfor %} -->
