@@ -33,7 +33,7 @@ li {
 }
 
 .navigation-bar {
-	position: relative;
+  position: relative;
 	list-style-type: none;
     margin: 0;
     padding: 0;
@@ -42,9 +42,9 @@ li {
   }
 
 /* Wrapper so that the nav bar is on top of the slideshow */
-.navbar-slideshow-wrapper {
+/* .navbar-slideshow-wrapper {
 	position: relative;
-}
+} */
 
 /* slideshow stuff */
 
@@ -178,11 +178,24 @@ img.image-section {
 .left {
   flex: 1;
   margin: 3px;
+  z-index: 2;
+  border: 3px solid #111511;
 }
 
 .right {
   flex: 1;
   margin: 3px;
+  z-index: 2;
+  border: 3px solid #111511;
+}
+
+.loginimage {
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 0;
 }
 
 /* footer stuff */

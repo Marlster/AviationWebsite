@@ -6,16 +6,27 @@
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}">
 {% endblock %}
 
-{% block body %}
 {% if user.is_authenticated %}
-	<ul class = "navigation-bar">
-		<li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
-		<li class = "navbar-buttons"><a class = "navbar-options" href="signuppage">Gliding Sessions</a></li>
-		<li class = "navbar-buttons"><a class = "navbar-options" href="trials">Info</a></li>
-		<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Settings</a></li>
-		<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
-	</ul>
+	<div style="margin-left: 8%; margin-right: 8%; height: 100px">
+		<div style="z-index: 2; position: absolute; margin: auto; padding: 20px 0">
+			<a href="{{ HTTP_HOST }}/home/">
+				<img src="{% static "registration/cropped-logo-final.png" %}" alt="AvSoc" class="logo" height=100px>
+			</a>
+		</div>
+		<div style="margin: auto; padding: 50px 0; padding-left: 10%">
+			{% block navbar %}
+			<ul class = "navigation-bar">
+				<li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
+				<li class = "navbar-buttons"><a class = "navbar-options" href="signuppage">Gliding Sessions</a></li>
+				<li class = "navbar-buttons"><a class = "navbar-options" href="trials">Info</a></li>
+				<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Settings</a></li>
+				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
+			</ul>
+			{% endblock %}
+		</div>
+	</div>
 {% endif %}
+{% block body %}
 <img src="{% static "accounts/gliders1.jpg" %}" alt="Background pic" class = "loginimage">
 <div class="infobox">
 	{% if user.is_authenticated %}

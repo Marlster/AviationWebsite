@@ -9,10 +9,23 @@
 	{% endblock %}
 </head>
 <body>
+	{% block nonav %}
+	<div style="padding-left: 8%; padding-right: 8%; height: 10%">
+		<div style="position: absolute; padding: 20px 0; z-index: 2">
+			<a href="{{ HTTP_HOST }}/home/">
+				<img src="{% static "registration/cropped-logo-final.png" %}" alt="AvSoc" class="logo" height=100px>
+			</a>
+		</div>
+		<div style="padding: 50px 0; margin-left: 10%">
+			{% block navbar %}
+			{% endblock %}
+		</div>
+	</div>
+	{% endblock %}
 	{% block body %}
 	{% endblock %}
 	<footer>
-		<p> Website designed & created by Marley Chinn © 2018. Full picture credits on gallery page. </p>
+		<p style="margin-left: 8%"> Website designed & created by Marley Chinn © 2018. Full picture credits on gallery page. </p>
 	</footer>
 </body>
 </html>

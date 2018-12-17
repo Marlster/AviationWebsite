@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import F, Count
 from .models import GlidingSignup, GlidingSession
 from urllib.request import urlopen
 import datetime
@@ -18,4 +19,14 @@ class SignupForm(forms.ModelForm):
         year = int(result_str[:4])
         month = int(result_str[5:7])
         day = int(result_str[8:10])
-        self.fields['session'].queryset = GlidingSession.objects.filter(date__gte=datetime.date(year,month,day)).order_by('date')
+        # checks each session is in the future
+        qs = GlidingSession.objects.filter(date__gte=datetime.date(year,month,day))
+        # checks each session isn't cancelled
+        qs = qs.filter(is_cancelled=False)
+        # checks each session has a free space
+        qs = qs.annotate(num_attendees=Count('attendees')).filter(num_attendees__lt=F('max_attendees'))
+        # TODO checks that the user hasn't signed up to it already
+        # orders the sessions by date
+        qs = qs.order_by('date') 
+        # returns the queryset of sessions to be used as the fields of the form
+        self.fields['session'].queryset = qs

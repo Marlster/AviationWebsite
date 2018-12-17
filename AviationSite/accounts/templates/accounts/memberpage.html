@@ -5,9 +5,7 @@
 <title>Member Page</title>
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}"> 
 {% endblock %}
-
-{% block body %}
-{% if user.is_authenticated %}
+	{% block navbar %}
 	<ul class = "navigation-bar">
 		<li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
 		<li class = "navbar-buttons"><a class = "navbar-options" href="signuppage">Gliding Sessions</a></li>
@@ -15,7 +13,8 @@
 		<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Settings</a></li>
 		<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
 	</ul>
-{% endif %}
+	{% endblock %}
+{% block body %}
 <img src="{% static "accounts/gliders1.jpg" %}" alt="Background pic" class = "loginimage">
 <div class="infobox">
 	{% if user.is_authenticated %}

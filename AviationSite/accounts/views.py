@@ -35,3 +35,6 @@ def signuppage(request):
         form = SignupForm()
     args = {'form': form}
     return render(request, 'accounts/glidingsignup.html',args)
+
+def userdetails(request):
+    return render(request, 'accounts/userdetails.html')

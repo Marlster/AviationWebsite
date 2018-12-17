@@ -1,81 +1,84 @@
 {% extends 'base.html' %}
 
 {% block head %}
-{% load static %}
+{% load staticfiles %}
 <title>Aviation Society</title>
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/home.css' %}">
 <script type="text/javascript" src="{% static 'accounts/home.js' %}"></script>
 {% endblock %}
-
+{% block navbar %}
+<ul class = "navigation-bar" style="border: 2px solid #111511; z-index: 2">
+		<li class = "navbar-buttons"><a class = "navbar-options" href="#our-story">Our Story</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="#events">Events</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="#trials">Trials</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="#join-us">Join Us</a></li>
+		<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Gallery</a></li>
+		{% if user.is_authenticated %}
+		<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/account/home">Member's Area</a></li>
+		{% else %}
+		<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/login">Member's Area</a></li>
+		{% endif %}
+</ul>
+{% endblock %}
 {% block body %}
-<div class = "navbar-slideshow-wrapper">
-	<ul class = "navigation-bar">
-			<li class = "navbar-buttons"><a class = "navbar-options" href="#our-story">Our Story</a></li>
-			<li class = "navbar-buttons"><a class = "navbar-options" href="#events">Events</a></li>
-			<li class = "navbar-buttons"><a class = "navbar-options" href="#trials">Trials</a></li>
-			<li class = "navbar-buttons"><a class = "navbar-options" href="#join-us">Join Us</a></li>
-			<li class = "navbar-buttons"><a class = "navbar-options" href="gallery">Gallery</a></li>
-			{% if user.is_authenticated %}
-			<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/account/home">Member's Area</a></li>
-			{% else %}
-			<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/login">Member's Area</a></li>
-			{% endif %}
-	</ul>
+<img src="{% static "accounts/sky1.png" %}" alt="Background pic" class = "loginimage" style="position: fixed; z-index: 0; max-width: 100%; top: 0; left: 0; opacity: 0.5">
+<div style="max-width: 84%; margin: auto; z-index: 4">
 	<div class = "slideshow-container" onmousemove="cancelautoslide()"> 
 		<div class="mySlides fade">
-			<img src="{% static "accounts/flying1.jpg" %}" style="width:100%">
-			</div>
+		<img src="{% static "accounts/flying1.jpg" %}" style="width:100%">
+		</div>
 
-			<div class="mySlides fade">
-			<img src="{% static "accounts/standing1.jpg" %}" style="width:100%">
-			</div>
+		<div class="mySlides fade">
+		<img src="{% static "accounts/standing1.jpg" %}" style="width:100%">
+		</div>
 
-			<div class="mySlides fade">
-			<img src="{% static "accounts/standing2.jpg" %}" style="width:100%">
-			</div>
+		<div class="mySlides fade">
+		<img src="{% static "accounts/standing2.jpg" %}" style="width:100%">
+		</div>
 
-			<!-- Next and previous buttons -->
-			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-			<a class="next" onclick="plusSlides(1)">&#10095;</a>
-	</div>
-	<div class = "dot-background">
-		<div class = "slideshow-dots">
+		<!-- Next and previous buttons -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		<!-- Dot Chooser -->
+		<div class = "dot-background">
+			<div class = "slideshow-dots">
 				<span class="dot" onclick="currentSlide(1)"></span> 
 				<span class="dot" onclick="currentSlide(2)"></span> 
 				<span class="dot" onclick="currentSlide(3)"></span> 
 			</div>
+		</div>
 	</div>
-</div>
-<div class = "text-image-bit"> 
-	<div class="text-section left">
-		<br>
-		<a class = "title-anchor-text" name="our-story" id="our-story">Our Story</a>
-		<p> We started from the bottom now we're here.</p>
+	<div class = "text-image-bit"> 
+		<div class="text-section left">
+			<br>
+			<a class = "title-anchor-text" name="our-story" id="our-story">Our Story</a>
+			<p> We started from the bottom now we're here.</p>
+		</div>
+		<img src="{% static "accounts/long1.jpg" %}" class = "image-section right" onload="cycleSlides();">
 	</div>
-	<img src="{% static "accounts/long1.jpg" %}" class = "image-section right" onload="cycleSlides();">
-</div>
-<div class = "text-image-bit">
-	<img src="{% static "accounts/long2.jpg" %}" class = "image-section left">
-	<div class="text-section right">
-		<br>
-		<a class = "title-anchor-text" name="events" id="events">Events</a>
-		<p>Partay!</p>
+	<div class = "text-image-bit">
+		<img src="{% static "accounts/long2.jpg" %}" class = "image-section left">
+		<div class="text-section right">
+			<br>
+			<a class = "title-anchor-text" name="events" id="events">Events</a>
+			<p>Partay!</p>
+		</div>
 	</div>
-</div>
-<div class = "text-image-bit"> 
-	<div class="text-section left">
-		<br>
-		<a class = "title-anchor-text" name="trials" id="trials">Trial Sessions</a>
-		<p> Trial sessions are available at all good retailers</p>
+	<div class = "text-image-bit"> 
+		<div class="text-section left">
+			<br>
+			<a class = "title-anchor-text" name="trials" id="trials">Trial Sessions</a>
+			<p> Trial sessions are available at all good retailers</p>
+		</div>
+		<img src="{% static "accounts/long3.jpg" %}" class = "image-section right">
 	</div>
-	<img src="{% static "accounts/long3.jpg" %}" class = "image-section right">
-</div>
-<div class = "text-image-bit">
-	<img src="{% static "accounts/long4.jpeg" %}" class = "image-section left">
-	<div class="text-section right">
-		<br>
-		<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
-		<p>Must be this tall to ride ¬</p>
+	<div class = "text-image-bit">
+		<img src="{% static "accounts/long4.jpeg" %}" class = "image-section left">
+		<div class="text-section right">
+			<br>
+			<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
+			<p>Must be this tall to ride ¬</p>
+		</div>
 	</div>
 </div>
 {% endblock %}
