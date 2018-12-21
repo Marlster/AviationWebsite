@@ -88,6 +88,18 @@ img.logo {
     position: relative;
 }
 
+.linkbutton {
+    display: block;
+    margin: auto;
+    background-color: #222;
+    width: 10%;
+    color: #fff;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
 footer {
   color: #eee;
   position: absolute;

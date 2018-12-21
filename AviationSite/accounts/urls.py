@@ -14,6 +14,8 @@ urlpatterns = [
     url(r'^signuppage$', views.signuppage),
     # details redirects to the user profile page
     url(r'^details$', views.userdetails),
+    # settings redirects to the user settings page
+    url(r'^settings$', views.settings),
     # a blank url redirects to the main home page
     url(r'^$', RedirectView.as_view(url='home/'))
 ]

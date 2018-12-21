@@ -2,7 +2,7 @@
 
 {% block head %}
 {% load static %}
-<title>User Details</title>
+<title>Settings</title>
 <link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}"> 
 {% endblock %}
 {% block navbar %}
@@ -17,13 +17,11 @@
 {% block body %}
 <img src="{% static "accounts/datgirl2.jpg" %}" alt="Background pic" class = "loginimage">
 <div class="infobox">
-	<h1>Hi {{ user.first_name }}!</h1>
-	<h1>Here is your profile:</h1>
-	<br>
-	<p>Your username is: {{ user.username }}</p>
-	<p>Your email is: {{ user.email }}</p>
-	<p>Your SGU account number is: {{ user.profile.account_no }}</p>
-	<p>You have had {{ user.profile.launches }} flights</p>
-	<p>You have flown for {{ user.profile.minutes_flown }} minutes</p>
+	<h1>Change password:</h1>
+	<form method="post">
+  		{% csrf_token %}
+  		{{ form }}
+  		<button type="submit">Save changes</button>
+	</form>
 </div>
 {% endblock %}

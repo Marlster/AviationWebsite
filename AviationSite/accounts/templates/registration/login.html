@@ -21,13 +21,8 @@
 	    	<label>
 	      		<input type="checkbox" checked="checked" name="remember"> Remember me
 	    	</label>
-	    	<a href="#" class="forgotbtn">Forgot password?</a>
+	    	<a href="{{ HTTP_HOST }}/accounts/password_reset" class="forgotbtn">Forgot password?</a>
 	  	</div>
 	</form>
-	<ul>
-<!-- 			{% for number in numbers %}
-		<li>{{ number }}</li>
-		{% endfor %} -->
-	</ul>
 </div>
 {% endblock %}
