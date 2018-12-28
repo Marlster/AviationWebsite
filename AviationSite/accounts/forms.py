@@ -33,3 +33,7 @@ class SignupForm(forms.ModelForm):
         qs = qs.order_by('date') 
         # returns the queryset of sessions to be used as the fields of the form
         self.fields['session'].queryset = qs
+
+# class CancelForm(forms.ModelForm):
+#     def __init__(self, *args, **kwargs):
+        

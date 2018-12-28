@@ -11,11 +11,15 @@ urlpatterns = [
     # home redirects to members home page
     url(r'^home$', views.membershome),
     # signup redirects to gliding signup page after a signup
-    url(r'^signuppage$', views.signuppage),
+    url(r'^signuppage$', views.signuppage, name="signups"),
     # details redirects to the user profile page
     url(r'^details$', views.userdetails),
     # settings redirects to the user settings page
     url(r'^settings$', views.settings),
+    # views sessions
+    # path(r'^<int:id>$', views.sessions, name='sessions'),
+    # deletes a sign up
+    url(r'^<int:id>/delete$', views.SignupDelete.as_view(), name="signup_delete"),
     # a blank url redirects to the main home page
     url(r'^$', RedirectView.as_view(url='home/'))
 ]

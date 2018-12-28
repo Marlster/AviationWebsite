@@ -3,9 +3,15 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.urls import reverse_lazy
+from django.views.generic.edit import DeleteView
 from .models import GlidingSignup,GlidingSession,Profile
 from .forms import SignupForm
 
+
+class SignupDelete(DeleteView):
+    model = GlidingSignup
+    success_url = reverse_lazy('signups:index')
 
 def home(request):
     # numbers = [1, 2, 3, 4, 5]
@@ -39,7 +45,8 @@ def signuppage(request):
         drivers = (session.glidingsignup_set.filter(is_driver=True))
         others = (session.glidingsignup_set.exclude(is_driver=True))
         date = (session.date)
-        sessions.append([drivers,others,date])
+        signid = (session.glidingsignup_set.get(member=request.user.profile)).id 
+        sessions.append([drivers,others,date,signid])
     args = {'form': form, 'sessions': sessions}
     return render(request, 'accounts/glidingsignup.html',args)
 

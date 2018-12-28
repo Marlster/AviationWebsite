@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% load static %}
+<title>Member Page</title>
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}"> 
+{% endblock %}
+{% block nonav %}
+{% endblock %}
+{% block body %}
+<img src="{% static "accounts/gliders1.jpg" %}" alt="Background pic" class = "loginimage">
+<div class="infobox">
+	<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to cancel your sign-up?</p>
+    <input type="submit" value="Confirm"/>
+</form>
+</div>
+{% endblock %}
