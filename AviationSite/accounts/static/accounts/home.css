@@ -33,18 +33,23 @@ li {
 }
 
 .navigation-bar {
+  border: 2px solid #111511;
+  z-index: 2;
   position: relative;
 	list-style-type: none;
-    margin: 0;
-    padding: 0;
-    background-color: #444944;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #444944;
+  overflow: hidden;
   }
 
-/* Wrapper so that the nav bar is on top of the slideshow */
-/* .navbar-slideshow-wrapper {
-	position: relative;
-} */
+/* main body stuff */
+
+.mainbody {
+  max-width: 84%; 
+  margin: auto; 
+  z-index: 4;
+}
 
 /* slideshow stuff */
 
@@ -160,6 +165,7 @@ li {
 .text-image-bit {
   display: flex;
   flex-flow: row wrap;
+  opacity: 0.9;
 }
 
 .title-anchor-text {
@@ -190,8 +196,8 @@ img.image-section {
 }
 
 .loginimage {
-  max-width: 100%;
   position: fixed;
+  max-width: 100%;
   top: 0;
   left: 0;
   opacity: 0.5;

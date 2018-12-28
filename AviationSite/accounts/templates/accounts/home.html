@@ -7,7 +7,7 @@
 <script type="text/javascript" src="{% static 'accounts/home.js' %}"></script>
 {% endblock %}
 {% block navbar %}
-<ul class = "navigation-bar" style="border: 2px solid #111511; z-index: 2">
+<ul class = "navigation-bar">
 		<li class = "navbar-buttons"><a class = "navbar-options" href="#our-story">Our Story</a></li>
 		<li class = "navbar-buttons"><a class = "navbar-options" href="#events">Events</a></li>
 		<li class = "navbar-buttons"><a class = "navbar-options" href="#trials">Trials</a></li>
@@ -21,8 +21,8 @@
 </ul>
 {% endblock %}
 {% block body %}
-<img src="{% static "accounts/sky1.png" %}" alt="Background pic" class = "loginimage" style="position: fixed; z-index: 0; max-width: 100%; top: 0; left: 0; opacity: 0.5">
-<div style="max-width: 84%; margin: auto; z-index: 4">
+<img src="{% static "accounts/tow.jpg" %}" alt="Background pic" class = "loginimage">
+<div class = "mainbody">
 	<div class = "slideshow-container" onmousemove="cancelautoslide()"> 
 		<div class="mySlides fade">
 		<img src="{% static "accounts/flying1.jpg" %}" style="width:100%">
