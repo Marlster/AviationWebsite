@@ -32,6 +32,11 @@
 			{{ signup.member.user.first_name }},
 		{% endfor %}
 		</p>
+		<form action="{% url 'signup_delete' session.3 %}" method="get">
+			{% csrf_token %}
+			<input type="hidden" name="signup_id" value="{{ session.3 }}">
+			<input type="submit" value="Cancel Signup">
+		</form>
 	{% endfor %}
 	<br>
 	<p> Upcoming Sessions: </p>
@@ -48,4 +53,4 @@
 	<p> Past Sessions:</p>
 </div>
 {% endblock %}
-<!-- 	<a href="{% url 'signups:signup_delete' session.3 %}">Cancel Signup</a> -->
+<!-- 	 -->

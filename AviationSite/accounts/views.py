@@ -11,7 +11,7 @@ from .forms import SignupForm
 
 class SignupDelete(DeleteView):
     model = GlidingSignup
-    success_url = reverse_lazy('signups:index')
+    success_url = reverse_lazy('signups')
 
 def home(request):
     # numbers = [1, 2, 3, 4, 5]
@@ -45,7 +45,7 @@ def signuppage(request):
         drivers = (session.glidingsignup_set.filter(is_driver=True))
         others = (session.glidingsignup_set.exclude(is_driver=True))
         date = (session.date)
-        signid = (session.glidingsignup_set.get(member=request.user.profile)).id 
+        signid = (session.glidingsignup_set.get(member=request.user.profile)).pk 
         sessions.append([drivers,others,date,signid])
     args = {'form': form, 'sessions': sessions}
     return render(request, 'accounts/glidingsignup.html',args)

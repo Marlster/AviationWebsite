@@ -23,7 +23,7 @@ urlpatterns = [
     # redirects to the built in accounts module (which lets users login/logout)
     path('accounts/', include('django.contrib.auth.urls')),
     # redirects to the urls in the account app
-    path('account/', include('accounts.urls')),
+    path('account/', include('accounts.urls'), name = 'accounts'),
     # used for the admin portal
     path('admin/', admin.site.urls),
     # blank url redirects as home

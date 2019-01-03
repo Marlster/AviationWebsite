@@ -160,12 +160,12 @@ li {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   text-align: center;
   background-color: #333733;
+  opacity: 0.9;
 }
 
 .text-image-bit {
   display: flex;
   flex-flow: row wrap;
-  opacity: 0.9;
 }
 
 .title-anchor-text {
