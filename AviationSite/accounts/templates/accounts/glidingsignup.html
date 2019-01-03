@@ -51,6 +51,9 @@
 	</div>
 	<br>
 	<p> Past Sessions:</p>
+	{% for session in past_sessions %}
+		<h2>{{ session.date }}</h2>
+	{% endfor %}
 </div>
 {% endblock %}
 <!-- 	 -->

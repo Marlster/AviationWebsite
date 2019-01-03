@@ -28,6 +28,8 @@ class GlidingSession(models.Model):
 class GlidingSignup(models.Model):
     member = models.ForeignKey(Profile, on_delete=models.CASCADE)
     session = models.ForeignKey(GlidingSession, on_delete=models.CASCADE)
+    # NOTE could add is_leader for the session leader (ie the committee member running it)
+    # then it can display the leader on the signup page
     is_driver = models.BooleanField(default = False)
     total_launches = models.IntegerField(default = 0)
     total_aerotows = models.IntegerField(default = 0)

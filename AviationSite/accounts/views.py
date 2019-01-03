@@ -5,8 +5,10 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
+from urllib.request import urlopen
 from .models import GlidingSignup,GlidingSession,Profile
 from .forms import SignupForm
+import datetime
 
 
 class SignupDelete(DeleteView):
@@ -38,16 +40,25 @@ def signuppage(request):
     # otherwise just returns the form
     else:
         form = SignupForm(user=request.user)
+    # date stuff
+    res = urlopen('http://just-the-time.appspot.com/')
+    result = res.read().strip()
+    result_str = result.decode('utf-8')
+    year = int(result_str[:4])
+    month = int(result_str[5:7])
+    day = int(result_str[8:10])
     # also gets currently signed up to sessions that aren't cancelled
-    currentSessions = GlidingSession.objects.filter(attendees__user=request.user).filter(is_cancelled=False)
-    sessions = []
+    currentSessions = GlidingSession.objects.filter(date__gte=datetime.date(year,month,day)).filter(attendees__user=request.user).filter(is_cancelled=False)
+    pastSessions = GlidingSession.objects.exclude(date__gte=datetime.date(year,month,day)).filter(attendees__user=request.user).filter(is_cancelled=False)
+    cSessions = []
     for session in currentSessions:
+        # NOTE could change to just a "2 spaces left" thing rather than names, will think about
         drivers = (session.glidingsignup_set.filter(is_driver=True))
         others = (session.glidingsignup_set.exclude(is_driver=True))
         date = (session.date)
         signid = (session.glidingsignup_set.get(member=request.user.profile)).pk 
-        sessions.append([drivers,others,date,signid])
-    args = {'form': form, 'sessions': sessions}
+        cSessions.append([drivers,others,date,signid])
+    args = {'form': form, 'sessions': cSessions, 'past_sessions': pastSessions}
     return render(request, 'accounts/glidingsignup.html',args)
 
 def userdetails(request):
