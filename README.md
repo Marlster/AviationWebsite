@@ -44,7 +44,8 @@ Will be dealt with once we make our first deployment - will probably use SemVer 
 
 ## Authors
 
-  * Marley Chinn - All code
+  * Marley Chinn - Front end and back end code
+  * Carl Oscar Raunio - Front end code
   * Various (listed on gallery page) - Photographs
 
 ## Acknowledgements
