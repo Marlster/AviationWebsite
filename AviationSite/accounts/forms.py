@@ -18,11 +18,9 @@ class SignupForm(forms.ModelForm):
         res = urlopen('http://just-the-time.appspot.com/')
         result = res.read().strip()
         result_str = result.decode('utf-8')
-        year = int(result_str[:4])
-        month = int(result_str[5:7])
-        day = int(result_str[8:10])
+        current_date = datetime.date(int(result_str[:4]),int(result_str[5:7]),int(result_str[8:10]))
         # checks each session is in the future
-        qs = GlidingSession.objects.filter(date__gte=datetime.date(year,month,day))
+        qs = GlidingSession.objects.filter(date__gte=current_date)
         # checks each session isn't cancelled
         qs = qs.filter(is_cancelled=False)
         # checks each session has a free space

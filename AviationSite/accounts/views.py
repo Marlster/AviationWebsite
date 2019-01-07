@@ -44,12 +44,13 @@ def signuppage(request):
     res = urlopen('http://just-the-time.appspot.com/')
     result = res.read().strip()
     result_str = result.decode('utf-8')
-    year = int(result_str[:4])
-    month = int(result_str[5:7])
-    day = int(result_str[8:10])
+    current_date = datetime.date(int(result_str[:4]),int(result_str[5:7]),int(result_str[8:10]))
+    # year = int(result_str[:4])
+    # month = int(result_str[5:7])
+    # day = int(result_str[8:10])
     # also gets currently signed up to sessions that aren't cancelled
-    currentSessions = GlidingSession.objects.filter(date__gte=datetime.date(year,month,day)).filter(attendees__user=request.user).filter(is_cancelled=False)
-    pastSessions = GlidingSession.objects.exclude(date__gte=datetime.date(year,month,day)).filter(attendees__user=request.user).filter(is_cancelled=False)
+    currentSessions = GlidingSession.objects.filter(date__gte=current_date).filter(attendees__user=request.user).filter(is_cancelled=False)
+    pastSessions = GlidingSession.objects.exclude(date__gte=current_date).filter(attendees__user=request.user).filter(is_cancelled=False)
     cSessions = []
     for session in currentSessions:
         # NOTE could change to just a "2 spaces left" thing rather than names, will think about
@@ -59,7 +60,7 @@ def signuppage(request):
         signid = (session.glidingsignup_set.get(member=request.user.profile)).pk 
         cSessions.append([drivers,others,date,signid])
     args = {'form': form, 'sessions': cSessions, 'past_sessions': pastSessions}
-    return render(request, 'accounts/glidingsignup.html',args)
+    return render(request, 'accounts/glidingsignup.html', args)
 
 def userdetails(request):
     if not request.user.is_authenticated:

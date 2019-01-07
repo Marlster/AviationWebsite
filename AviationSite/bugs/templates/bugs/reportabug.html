@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% load static %}
+<title>Report A Bug</title>
+<!-- link rel="stylesheet" type="text/css" href="{% static 'registration/login.css' %}"  -->
+{% endblock %}
+{% block nonav %}
+{% endblock %}
+{% block body %}
+<!-- img src="{% static "registration/standing5.jpeg" %}" alt="Background pic" class = "loginimage" -->
+{% if user.is_authenticated %}
+	<div class="bugform">
+		<form action="/reportabug/" method="post">
+	    	{% csrf_token %}
+		  	{{ form }}
+	    	<input type="submit" value="Report">
+		</form>
+	</div>
+{% else %}
+	<div class="bugform">
+		<p>Only logged in users can report bugs, sorry! Please log in <a href="{{ HTTP_HOST }}/accounts/login/" class = "linkbutton">here</a></p>
+	</div>
+{% endif %}
+{% endblock %}

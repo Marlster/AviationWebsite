@@ -24,6 +24,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # redirects to the urls in the account app
     path('account/', include('accounts.urls'), name = 'accounts'),
+    # redirects to the urls in the bug reporting app
+    path('reportabug/', include('bugs.urls'), name = 'bugs'),
     # used for the admin portal
     path('admin/', admin.site.urls),
     # blank url redirects as home
