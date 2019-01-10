@@ -1,0 +1,70 @@
+{% extends 'base_home.html' %}
+
+{% block head %}
+{% load staticfiles %}
+<title>Aviation Society</title>
+<link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+<script type="text/javascript" src="{% static 'home/home.js' %}"></script>
+{% endblock %}
+{% block body %}
+<img src="{% static "home/tow.jpg" %}" alt="Background pic" class = "loginimage">
+<div class = "mainbody">
+	<div class = "slideshow-container" onmousemove="cancelautoslide()"> 
+		<div class="mySlides fade">
+		<img src="{% static "home/flying1.jpg" %}" style="width:100%">
+		</div>
+
+		<div class="mySlides fade">
+		<img src="{% static "home/standing1.jpg" %}" style="width:100%">
+		</div>
+
+		<div class="mySlides fade">
+		<img src="{% static "home/standing2.jpg" %}" style="width:100%">
+		</div>
+
+		<!-- Next and previous buttons -->
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		<!-- Dot Chooser -->
+		<div class = "dot-background">
+			<div class = "slideshow-dots">
+				<span class="dot" onclick="currentSlide(1)"></span> 
+				<span class="dot" onclick="currentSlide(2)"></span> 
+				<span class="dot" onclick="currentSlide(3)"></span> 
+			</div>
+		</div>
+	</div>
+	<div class = "text-image-bit"> 
+		<div class="text-section left">
+			<br>
+			<a class = "title-anchor-text" name="our-story" id="our-story">Our Story</a>
+			<p> We started from the bottom now we're here.</p>
+		</div>
+		<img src="{% static "home/long1.jpg" %}" class = "image-section right" onload="cycleSlides();">
+	</div>
+	<div class = "text-image-bit">
+		<img src="{% static "home/long2.jpg" %}" class = "image-section left">
+		<div class="text-section right">
+			<br>
+			<a class = "title-anchor-text" name="events" id="events">Events</a>
+			<p>Partay!</p>
+		</div>
+	</div>
+	<div class = "text-image-bit"> 
+		<div class="text-section left">
+			<br>
+			<a class = "title-anchor-text" name="trials" id="trials">Trial Sessions</a>
+			<p> Trial sessions are available at all good retailers</p>
+		</div>
+		<img src="{% static "home/long3.jpg" %}" class = "image-section right">
+	</div>
+	<div class = "text-image-bit">
+		<img src="{% static "home/long4.jpeg" %}" class = "image-section left">
+		<div class="text-section right">
+			<br>
+			<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
+			<p>Must be this tall to ride ¬</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

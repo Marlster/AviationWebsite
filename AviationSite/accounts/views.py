@@ -13,15 +13,8 @@ class SignupDelete(DeleteView):
     model = GlidingSignup
     success_url = reverse_lazy('signups')
 
-def home(request):
-    # numbers = [1, 2, 3, 4, 5]
-    # name = 'Marley Chinn'
-    # args = {'myName': name, 'numbers': numbers}
-    return render(request, 'accounts/home.html')
-
 def membershome(request):
     return render(request, 'accounts/memberpage.html')
-
 
 def signuppage(request):
     # processes form data if its a POST request
@@ -73,3 +66,8 @@ def settings(request):
     return render(request, 'accounts/settings.html', {
         'form': form
     })
+
+
+    # numbers = [1, 2, 3, 4, 5]
+    # name = 'Marley Chinn'
+    # args = {'myName': name, 'numbers': numbers}

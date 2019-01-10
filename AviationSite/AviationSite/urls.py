@@ -19,7 +19,7 @@ from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
     # displays a static home page
-    path('home/', TemplateView.as_view(template_name='accounts/home.html')),
+    path('home/', include('home.urls')),
     # redirects to the built in accounts module (which lets users login/logout)
     path('accounts/', include('django.contrib.auth.urls')),
     # redirects to the urls in the account app
