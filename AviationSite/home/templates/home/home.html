@@ -38,7 +38,7 @@
 		<div class="text-section left">
 			<br>
 			<a class = "title-anchor-text" name="our-story" id="our-story">Our Story</a>
-			<p> We started from the bottom now we're here.</p>
+			<p>{{ textsections.our_story.text }}</p>
 		</div>
 		<img src="{% static "home/long1.jpg" %}" class = "image-section right" onload="cycleSlides();">
 	</div>
@@ -47,14 +47,14 @@
 		<div class="text-section right">
 			<br>
 			<a class = "title-anchor-text" name="events" id="events">Events</a>
-			<p>Partay!</p>
+			<p>{{ textsections.events.text }}</p>
 		</div>
 	</div>
 	<div class = "text-image-bit"> 
 		<div class="text-section left">
 			<br>
 			<a class = "title-anchor-text" name="trials" id="trials">Trial Sessions</a>
-			<p> Trial sessions are available at all good retailers</p>
+			<p>{{ textsections.trial_sessions.text }}</p>
 		</div>
 		<img src="{% static "home/long3.jpg" %}" class = "image-section right">
 	</div>
@@ -63,7 +63,7 @@
 		<div class="text-section right">
 			<br>
 			<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
-			<p>Must be this tall to ride ¬</p>
+			<p>{{ textsections.join_us.text }}</p>
 		</div>
 	</div>
 </div>

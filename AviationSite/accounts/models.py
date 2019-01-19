@@ -7,11 +7,8 @@ from django.forms import ModelForm
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length = 500, blank = True)
-    account_no = models.TextField(max_length = 10, blank = True)
-    minutes_flown = models.IntegerField(default = 0)
-    launches = models.IntegerField(default = 0)
-
+    bio = models.TextField(blank = True)
+    account_no = models.CharField(max_length = 10, blank = True)
     def __unicode__(self):
         return self.name
 

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import HomepageVersion, TextSection
 
-# Register your models here.
+admin.site.register(HomepageVersion)
+admin.site.register(TextSection)
