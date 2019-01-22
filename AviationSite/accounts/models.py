@@ -9,8 +9,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank = True)
     account_no = models.CharField(max_length = 10, blank = True)
-    def __unicode__(self):
-        return self.name
+    def __str__(self):
+        return self.user.username
 
 class GlidingSession(models.Model):
     attendees = models.ManyToManyField(Profile, through='GlidingSignup')
@@ -19,8 +19,8 @@ class GlidingSession(models.Model):
     is_cancelled = models.BooleanField()
     class Meta:
         verbose_name = "Gliding Session"
-    def __unicode__(self):
-        return self.name
+    def __str__(self):
+        return self.date
 
 class GlidingSignup(models.Model):
     member = models.ForeignKey(Profile, on_delete=models.CASCADE)
@@ -32,8 +32,8 @@ class GlidingSignup(models.Model):
     total_aerotows = models.IntegerField(default = 0)
     total_minutes = models.IntegerField(default = 0)
 
-    def __unicode__(self):
-        return self.name
+    def __str__(self):
+        return self.member.user.username + ' ' + str(self.session.date)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

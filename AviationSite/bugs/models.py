@@ -18,7 +18,7 @@ class BugReport(models.Model):
     fixed = models.BooleanField(default=False)
     date_fixed = models.DateField(null=True, blank=True)
     fixed_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name="fixer")
+    def __str__(self):
+        return self.date_reported
     class Meta:
         verbose_name = "Bug Report"
-    def __unicode__(self):
-        return self.name
