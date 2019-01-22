@@ -9,6 +9,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank = True)
     account_no = models.CharField(max_length = 10, blank = True)
+    can_drive = models.BooleanField(default = False)
     def __str__(self):
         return self.user.username
 
@@ -16,11 +17,11 @@ class GlidingSession(models.Model):
     attendees = models.ManyToManyField(Profile, through='GlidingSignup')
     date = models.DateField()
     max_attendees = models.IntegerField(default = 5)
-    is_cancelled = models.BooleanField()
+    is_cancelled = models.BooleanField(default = False)
     class Meta:
         verbose_name = "Gliding Session"
     def __str__(self):
-        return self.date
+        return str(self.date)
 
 class GlidingSignup(models.Model):
     member = models.ForeignKey(Profile, on_delete=models.CASCADE)

@@ -6,12 +6,16 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
 from .models import GlidingSignup,GlidingSession,Profile
-from .forms import SignupForm
+from .forms import SignupForm, NewSessionForm
 from common.utils import getcurrentdate
 
 class SignupDelete(DeleteView):
     model = GlidingSignup
     success_url = reverse_lazy('signups')
+
+# class SessionCreate(CreateView):
+#     model = GlidingSession
+#     fields = ['date']
 
 def membershome(request):
     return render(request, 'accounts/memberpage.html')
@@ -67,7 +71,20 @@ def settings(request):
         'form': form
     })
 
-
-    # numbers = [1, 2, 3, 4, 5]
-    # name = 'Marley Chinn'
-    # args = {'myName': name, 'numbers': numbers}
+def newsession(request):
+    if not request.user.is_superuser:
+        return render(request, 'accounts/memberpage.html')
+    if request.method == 'POST':
+        form = NewSessionForm(request.POST)
+        if form.is_valid():
+            newSession = GlidingSession(date = form.cleaned_data['date'])
+            newSession.max_attendees = int(form.cleaned_data['max_attendees'])
+            newSession.save()
+            newSignup = GlidingSignup(session = newSession, member = form.cleaned_data['driver'])
+            newSignup.is_driver = True
+            newSignup.save()
+            return redirect('/account/signuppage')
+    else:
+        form = NewSessionForm()
+    args = {'form': form}
+    return render(request, 'accounts/glidingsession_form.html', args)

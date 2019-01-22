@@ -16,6 +16,8 @@ urlpatterns = [
     url(r'^details$', views.userdetails),
     # settings redirects to the user settings page
     url(r'^settings$', views.settings),
+    # settings redirects to the user settings page
+    url(r'^newsession$', views.newsession),
     # deletes a sign up
     path('<int:pk>/delete', views.SignupDelete.as_view(), name="signup_delete"),
     # a blank url redirects to the main home page
