@@ -16,8 +16,15 @@ urlpatterns = [
     url(r'^details$', views.userdetails),
     # settings redirects to the user settings page
     url(r'^settings$', views.settings),
-    # settings redirects to the user settings page
+    # newsession redirects to the admin form for creating a new gliding session
     url(r'^newsession$', views.newsession),
+    # choosesession redirects to the admin form for choosing a past session to fill
+    # which then redirects to the admin form for filling in a past session's gliding times
+    url(r'^choosesession$', views.choosesession),
+    # used for the fill session form 
+    path('fillsession/<int:pk>', views.fillsession, name="fill_session"),
+    # updatehome redirects to the admin form for updating the text on the home page
+    url(r'^updatehome$', views.newsession),
     # deletes a sign up
     path('<int:pk>/delete', views.SignupDelete.as_view(), name="signup_delete"),
     # a blank url redirects to the main home page

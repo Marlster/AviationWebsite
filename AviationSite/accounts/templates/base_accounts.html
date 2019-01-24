@@ -24,7 +24,9 @@
 				<li class = "navbar-buttons"><a class = "navbar-options" href="info">Info</a></li>
 				<li class = "navbar-buttons"><a class = "navbar-options" href="settings">Settings</a></li>
 				{% if user.is_superuser %}
-				<li class = "navbar-buttons"><a class = "navbar-options" href="newsession" style="color: #FF3333">Admin: Create a new session</a></li>
+				<li class = "navbar-buttons"><a class = "navbar-options" href="newsession" style="color: #FF3333">Create a new session</a></li>
+				<li class = "navbar-buttons"><a class = "navbar-options" href="choosesession" style="color: #FF3333">Fill in session details</a></li>
+				<li class = "navbar-buttons"><a class = "navbar-options" href="updatehome" style="color: #FF3333">Update homepage text</a></li>
 				{% endif %}
 				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
 			</ul>

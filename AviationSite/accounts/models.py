@@ -10,6 +10,7 @@ class Profile(models.Model):
     bio = models.TextField(blank = True)
     account_no = models.CharField(max_length = 10, blank = True)
     can_drive = models.BooleanField(default = False)
+    paid_member = models.BooleanField(default = False)
     def __str__(self):
         return self.user.username
 
@@ -18,6 +19,7 @@ class GlidingSession(models.Model):
     date = models.DateField()
     max_attendees = models.IntegerField(default = 5)
     is_cancelled = models.BooleanField(default = False)
+    filled = models.BooleanField(default = False)
     class Meta:
         verbose_name = "Gliding Session"
     def __str__(self):
