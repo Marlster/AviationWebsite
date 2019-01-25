@@ -1,9 +1,17 @@
 from django import forms
 from django.db.models import F, Count
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from .models import GlidingSignup, GlidingSession, Profile
 from common.utils import getcurrentdate
 
-# make sure to pass the user as an argument so that it can be used to filter the results
+class NewUserForm(UserCreationForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Please input a valid email address.')
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2',)
+
 class SignupForm(forms.ModelForm):
     class Meta:
         model = GlidingSignup

@@ -1,0 +1,21 @@
+{% extends 'base_accounts.html' %}
+
+{% block head %}
+{% load static %}
+<title>Unconfirmed Email</title>
+<link rel="stylesheet" type="text/css" href="{% static 'registration/login.css' %}"> 
+{% endblock %}
+{% block nonav %}
+{% endblock %}
+{% block body %}
+<img src="{% static "registration/standing5.jpeg" %}" alt="Background pic" class = "loginimage">
+<div class="loginform">
+	<p>
+    	Please confirm your email address by clicking on the link in the email sent to your address to complete your registration.
+  	</p>
+  	<p>
+    	If you don't receive an email, please make sure you entered the correct address
+    	and check your spam folder.
+  	</p>
+</div>
+{% endblock %}

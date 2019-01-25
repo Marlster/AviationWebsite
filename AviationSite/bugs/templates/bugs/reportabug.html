@@ -3,7 +3,7 @@
 {% block head %}
 {% load static %}
 <title>Report A Bug</title>
-<!-- link rel="stylesheet" type="text/css" href="{% static 'registration/login.css' %}"  -->
+<!-- link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}" -->
 {% endblock %}
 {% block nonav %}
 {% endblock %}
@@ -11,11 +11,14 @@
 <!-- img src="{% static "registration/standing5.jpeg" %}" alt="Background pic" class = "loginimage" -->
 {% if user.is_authenticated %}
 	<div class="bugform">
+		<h1> Bug reporting form</h1>
+		<h3>(sorry about the lack of CSS!)</h3>
 		<form action="/reportabug/" method="post">
 	    	{% csrf_token %}
 		  	{{ form }}
 	    	<input type="submit" value="Report">
 		</form>
+		<h4>For the screenshot URL please upload a screenshot of the bug to <a href="https://imgur.com/upload">here</a> (imgur) and paste the link in the box above</h4>
 	</div>
 {% else %}
 	<div class="bugform">

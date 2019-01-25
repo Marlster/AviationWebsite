@@ -1,0 +1,20 @@
+{% extends 'base_accounts.html' %}
+
+{% block head %}
+{% load static %}
+<title>Invalid Confirmation Link</title>
+<link rel="stylesheet" type="text/css" href="{% static 'registration/login.css' %}"> 
+{% endblock %}
+{% block nonav %}
+{% endblock %}
+{% block body %}
+<img src="{% static "registration/standing5.jpeg" %}" alt="Background pic" class = "loginimage">
+<div class="loginform">
+	<p>
+    	Unfortunately that link was invalid. Please try again.
+  	</p>
+  	<p>
+    	If you continue to have trouble confirming your email, please talk to a committee member.
+  	</p>
+</div>
+{% endblock %}

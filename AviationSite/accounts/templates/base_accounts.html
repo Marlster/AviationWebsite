@@ -21,12 +21,14 @@
 			<ul class = "navigation-bar">
 		        <li class = "navbar-buttons"><a class = "navbar-options" href="details">Account Details</a></li>
 		        <li class = "navbar-buttons"><a class = "navbar-options" href="signuppage">Gliding Sessions</a></li>
-				<li class = "navbar-buttons"><a class = "navbar-options" href="info">Info</a></li>
+				<!-- <li class = "navbar-buttons"><a class = "navbar-options" href="info">Info</a></li> -->
 				<li class = "navbar-buttons"><a class = "navbar-options" href="settings">Settings</a></li>
-				{% if user.is_superuser %}
+				{% if user.is_staff %}
 				<li class = "navbar-buttons"><a class = "navbar-options" href="newsession" style="color: #FF3333">Create a new session</a></li>
 				<li class = "navbar-buttons"><a class = "navbar-options" href="choosesession" style="color: #FF3333">Fill in session details</a></li>
-				<li class = "navbar-buttons"><a class = "navbar-options" href="updatehome" style="color: #FF3333">Update homepage text</a></li>
+				{% endif %}
+				{% if user.is_superuser %}
+				<li class = "navbar-buttons"><a class = "navbar-options" href="updatehome" style="color: #FFCC11">Update homepage text</a></li>
 				{% endif %}
 				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/logout/">Logout</a></li>
 			</ul>
@@ -37,8 +39,8 @@
 	{% block body %}
 	{% endblock %}
 	<footer>
-		<p style="margin-left: 8%"> Website designed & created by Marley Chinn and Carl Oscar Raunio © 2018. Full picture credits on gallery page. </p>
-		<p style="margin-left: 8%; z-index: 3">Found a bug? <a href="{{ HTTP_HOST }}/reportabug/">Report it here</a></p>
+		<!-- <p style="margin-left: 8%"> Website designed & created by Marley Chinn with some CSS help from Oscar Raunio © 2019</p> -->
+		<p style="margin-left: 100px; z-index: 3">Found a bug? <a href="{{ HTTP_HOST }}/reportabug/">Report it here</a></p>
 	</footer>
 </body>
 </html>

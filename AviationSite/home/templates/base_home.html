@@ -22,20 +22,24 @@
 				<li class = "navbar-buttons"><a class = "navbar-options" href="#events">Events</a></li>
 				<li class = "navbar-buttons"><a class = "navbar-options" href="#trials">Trials</a></li>
 				<li class = "navbar-buttons"><a class = "navbar-options" href="#join-us">Join Us</a></li>
-				<li class = "navbar-buttons"><a class = "navbar-options" href="{{ HTTP_HOST }}/gallery">Gallery</a></li>
+				{% if user.is_superuser %}
+				<li class = "navbar-buttons"><a class = "navbar-options" href="{{ HTTP_HOST }}/gallery" style="color: #FFCC11">Gallery</a></li>
+				{% endif %}
 				{% if user.is_authenticated %}
 				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/account/home">Member's Area</a></li>
+				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options">Hello{% if not user.first_name %} Member!{% else %} {{ user.first_name }}! {% endif %}</a></li>
 				{% else %}
-				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/login">Member's Area</a></li>
+				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/accounts/login">Login</a></li>
+				<li class = "navbar-buttons" style="float:right"><a class = "navbar-options" href="{{ HTTP_HOST }}/account/newuser">Create Account</a></li>
 				{% endif %}
 			</ul>
 		</div>
 	</div>
 	{% block body %}
 	{% endblock %}
-	<footer>
-		<p style="margin-left: 8%"> Website designed & created by Marley Chinn and Carl Oscar Raunio © 2018. Full picture credits on gallery page. </p>
-		<p style="margin-left: 8%; z-index: 10">Found a bug? <a href="{{ HTTP_HOST }}/reportabug/">Report it here</a></p>
+	<footer style="z-index: 10">
+		<p style="margin-left: 100px"> Website designed & created by Marley Chinn with some CSS help from Oscar Raunio © 2019</p>
+<!-- 		<p style="margin-left: 100px">Found a bug? <a href="{{ HTTP_HOST }}/reportabug/">Report it here</a></p> -->
 	</footer>
 </body>
 </html>

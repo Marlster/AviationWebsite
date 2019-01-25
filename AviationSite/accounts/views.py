@@ -1,24 +1,71 @@
+# Shortcuts
 from django.shortcuts import render, redirect, get_object_or_404
+# Contrib stuff
+from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import update_session_auth_hash, login
 from django.contrib.auth.forms import PasswordChangeForm
+# Django Utils
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+# Other Django Stuff
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic.edit import DeleteView
 from django.forms import modelformset_factory, BaseModelFormSet
+# Custom Stuff
 from .models import GlidingSignup,GlidingSession,Profile
-from .forms import SignupForm, NewSessionForm, ChooseSessionForm, FillForm
+from .forms import SignupForm, NewSessionForm, ChooseSessionForm, FillForm, NewUserForm
+from .tokens import account_activation_token
 from common.utils import getcurrentdate
+
 class SignupDelete(DeleteView):
     model = GlidingSignup
     success_url = reverse_lazy('signups')
 
-# class SessionCreate(CreateView):
-#     model = GlidingSession
-#     fields = ['date']
-
 def membershome(request):
     return render(request, 'accounts/memberpage.html')
+
+def newuser(request):
+    if request.method == 'POST':
+        form = NewUserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.is_active = False
+            user.save()
+            current_site = get_current_site(request)
+            subject = 'Activate Your MySite Account'
+            message = render_to_string('accounts/account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'token': account_activation_token.make_token(user),
+            })
+            user.email_user(subject, message)
+            return redirect('account_activation_sent')
+    else:
+        form = NewUserForm()
+    return render(request, 'accounts/newuser.html', {'form': form})
+
+def account_activation_sent(request):
+    return render(request, 'accounts/activate_message.html')
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.profile.email_confirmed = True
+        user.save()
+        login(request, user)
+        return redirect('home')
+    else:
+        return render(request, 'account_activation_invalid.html')
 
 def signuppage(request):
     # processes form data if its a POST request
@@ -75,7 +122,7 @@ def settings(request):
     })
 
 def newsession(request):
-    if not request.user.is_superuser:
+    if not request.user.is_staff:
         return render(request, 'accounts/memberpage.html')
     if request.method == 'POST':
         form = NewSessionForm(request.POST)
@@ -94,7 +141,7 @@ def newsession(request):
     return render(request, 'accounts/newglidingsession.html', args)
 
 def choosesession(request):
-    if not request.user.is_superuser:
+    if not request.user.is_staff:
         return render(request, 'accounts/memberpage.html')
     if request.method == 'POST':
         form = ChooseSessionForm(request.POST)
@@ -109,16 +156,6 @@ def choosesession(request):
 
 def fillsession(request, pk=1):
     session=get_object_or_404(GlidingSession, id=pk) # gets the selected session
-    # FillFormSet = modelformset_factory(GlidingSignup, form = FillForm, extra=session.attendees.count())
-    # class FormSetWithInstances(BaseModelFormSet):
-    #     def __init__(self, *args, **kwargs):
-    #         self.instances = kwargs.pop('instances')
-    #         super(FormSetWithInstances, self).__init__(*args, **kwargs)
-    #     def get_form_kwargs(self, index):
-    #         form_kwargs = super(FormSetWithInstances, self).get_form_kwargs(index)
-    #         if index < len(self.instances):
-    #             form_kwargs['instance'] = self.instances[index]
-    #         return form_kwargs
     if request.method == 'POST':
         form = FillForm(request.POST, attendees = session.attendees.all())
         if form.is_valid():
@@ -138,9 +175,3 @@ def fillsession(request, pk=1):
         attendees.append([attendee,fields])
     args = {'session': session, 'attendees': attendees}
     return render(request, 'accounts/fillsession.html', args)
-
-        # try:
-        # instances = session.glidingsignup_set.all()
-        # formset = FillFormSet(request.POST, request.FILES)
-        # except ValidationError:
-        #     formset = None 

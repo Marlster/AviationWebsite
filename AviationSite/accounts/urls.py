@@ -12,6 +12,12 @@ urlpatterns = [
     url(r'^home$', views.membershome, name = "home"),
     # signup redirects to gliding signup page after a signup
     url(r'^signuppage$', views.signuppage, name="signups"),
+    # newuser redirects the user to the account creation page
+    url(r'^newuser$', views.newuser),
+    # sends the user to page telling them to confirm their email
+    url(r'^account_activation_sent$', views.account_activation_sent, name='account_activation_sent'),
+    # a url which confirms a user's email address and activates their account
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})$', views.activate, name='activate'),
     # details redirects to the user profile page
     url(r'^details$', views.userdetails),
     # settings redirects to the user settings page
