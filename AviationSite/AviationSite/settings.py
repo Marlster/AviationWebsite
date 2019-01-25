@@ -19,12 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*&#zmw5xu0#ls8e86h0+!rvi%p0x1*i%l&-%e^%5^^+k8*pd%n'
+SECRET_KEY = os.environ['SECRET_KEY_AVSITE']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.avsoc.co.uk']
 
 
 # Application definition
@@ -42,7 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
+DEFAULT_FROM_EMAIL = 'aviation@st-andrews.ac.uk'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'Marlster7'
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID-PASSWORD']
+EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During development only
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,7 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# NOTE: set these to true once HTTPS is enabled (need SSL certificate)
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
 
+CONN_MAX_AGE = 5
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -123,6 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = '/var/www/avsoc.co.uk/static/'
 STATIC_URL = '/static/'
 
 # redirects user on successful login
