@@ -49,7 +49,7 @@ EMAIL_HOST_USER = 'Marlster7'
 EMAIL_HOST_PASSWORD = os.environ['SENDGRID-PASSWORD']
 EMAIL_USE_TLS = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During development only
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -115,6 +115,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # NOTE: set these to true once HTTPS is enabled (need SSL certificate)
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'
 
 CONN_MAX_AGE = 5
 # Internationalization
