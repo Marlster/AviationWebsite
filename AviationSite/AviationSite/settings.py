@@ -19,12 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY_AVSITE']
+SECRET_KEY = 'basesecretkeynouseinprodplsthx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.avsoc.co.uk']
+ALLOWED_HOSTS = ['.avsoc.co.uk', '127.0.0.1', u'mmc21.host.cs.st-andrews.ac.uk' ]
 
 
 # Application definition
@@ -46,7 +46,7 @@ DEFAULT_FROM_EMAIL = 'aviation@st-andrews.ac.uk'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'Marlster7'
-EMAIL_HOST_PASSWORD = os.environ['SENDGRID-PASSWORD']
+EMAIL_HOST_PASSWORD = 'SENDGRID-PASSWORD-HERE'
 EMAIL_USE_TLS = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
@@ -139,7 +139,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_ROOT = '/var/www/avsoc.co.uk/static/'
+# STATIC_ROOT = '/var/www/avsoc.co.uk/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/static/'
 
 # redirects user on successful login
