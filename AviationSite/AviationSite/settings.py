@@ -25,7 +25,7 @@ SECRET_KEY = '*Bd.(.zoottw${|JB_CY<sH~Za~fF<;=QPS.Us<gAzhP8f_Co(hdR=S7!(O0^n{'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.avsoc.co.uk', '127.0.0.1', u'mmc21.host.cs.st-andrews.ac.uk','.av-soc-website.herokuapp.com ']
+ALLOWED_HOSTS = ['.avsoc.co.uk', '127.0.0.1', u'mmc21.host.cs.st-andrews.ac.uk','av-soc-website.herokuapp.com']
 
 
 # Application definition
