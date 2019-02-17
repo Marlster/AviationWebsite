@@ -1,1 +1,1 @@
-web: gunicorn AviationSite/AviationSite.wsgi
+web: gunicorn AviationSite.wsgi
