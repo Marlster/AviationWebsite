@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -19,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'basesecretkeynouseinprodplsthx'
+SECRET_KEY = '*Bd.(.zoottw${|JB_CY<sH~Za~fF<;=QPS.Us<gAzhP8f_Co(hdR=S7!(O0^n{'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -152,3 +153,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Used to get the profile of a user
 AUTH_PROFILE_MODULE = 'user_profile.UserProfile'
+
+django_heroku.settings(locals())
