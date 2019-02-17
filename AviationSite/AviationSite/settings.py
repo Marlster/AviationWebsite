@@ -89,9 +89,16 @@ WSGI_APPLICATION = 'AviationSite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	# postgresql settings
+	  	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd4u0dhoqhidgu0',
+        'USER': 'kflzeliaoljbzt',
+        'PASSWORD': '789c79edc1715dc30f07bf263cc203e8bac94216b56e3a5bf4f99b382d453d30',
+        'HOST': 'ec2-54-83-17-151.compute-1.amazonaws.com',
+        'PORT': '5432',
+	}
 }
 
 
