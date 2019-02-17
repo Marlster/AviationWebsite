@@ -1,1 +1,1 @@
-web: gunicorn AviationSite.wsgi
+web: gunicorn --chdir /AviationSite AviationSite.wsgi
