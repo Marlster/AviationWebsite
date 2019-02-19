@@ -35,7 +35,7 @@ def newuser(request):
             user.is_active = False
             user.save()
             current_site = get_current_site(request)
-            subject = 'Activate Your MySite Account'
+            subject = 'Activate Your Aviation Society Account'
             message = render_to_string('accounts/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -91,7 +91,7 @@ def signuppage(request):
         drivers = (session.glidingsignup_set.filter(is_driver=True))
         others = (session.glidingsignup_set.exclude(is_driver=True))
         date = (session.date)
-        signid = (session.glidingsignup_set.get(member=request.user.profile)).pk 
+        signid = (session.glidingsignup_set.get(member=request.user.profile)).pk
         cSessions.append([drivers,others,date,signid])
     # this processes the data for the past signups section
     pastSessions = GlidingSession.objects.exclude(date__gte=getcurrentdate()).filter(attendees__user=request.user).filter(is_cancelled=False)
