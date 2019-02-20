@@ -27,7 +27,7 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
   // setTimeout(showSlides, 2000);
-} 
+}
 
 var timeout;
 
@@ -40,7 +40,7 @@ function cycleSlides() {
   timeout = setTimeout(cycleSlides, 5000);
 }
 
-// Cancels the cycle when the mouse is moved over the slideshow, 
+// Cancels the cycle when the mouse is moved over the slideshow,
 // so that the user can view the images at their leisure
 function cancelautoslide() {
   clearTimeout(timeout);
