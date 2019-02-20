@@ -38,7 +38,7 @@
 		<div class="text-section left">
 			<br>
 			<a class = "title-anchor-text" name="our-story" id="our-story">Our Story</a>
-			<p>{{ textsections.our_story.text }}</p>
+			<p>{{ textsections.our_story.text|linebreaks }}</p>
 		</div>
 		<img src="{% static "home/long1.jpg" %}" class = "image-section right" onload="cycleSlides();">
 	</div>
@@ -47,14 +47,14 @@
 		<div class="text-section right">
 			<br>
 			<a class = "title-anchor-text" name="events" id="events">Events</a>
-			<p>{{ textsections.events.text }}</p>
+			<p>{{ textsections.events.text|linebreaks }}</p>
 		</div>
 	</div>
 	<div class = "text-image-bit">
 		<div class="text-section left">
 			<br>
 			<a class = "title-anchor-text" name="trials" id="trials">Trial Sessions</a>
-			<p>{{ textsections.trial_sessions.text }}</p>
+			<p>{{ textsections.trial_sessions.text|linebreaks }}</p>
 		</div>
 		<img src="{% static "home/long3.jpg" %}" class = "image-section right">
 	</div>
@@ -63,7 +63,7 @@
 		<div class="text-section right">
 			<br>
 			<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
-			<p>{{ textsections.join_us.text }}</p>
+			<p>{{ textsections.join_us.text|linebreaks }}</p>
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 					<input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="BNES38HS3Q3BG">
