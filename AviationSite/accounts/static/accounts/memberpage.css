@@ -1,4 +1,22 @@
-body, html {background-color: #111511}
+html {
+  background-color: #111511;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #111511;
+  position: relative;
+  margin: 0;
+  padding-bottom: 3rem;
+  min-height: 100%;
+}
 
 /* navbar stuff */
 
@@ -81,10 +99,18 @@ li {
     opacity: 0.9;
 }
 
-footer {
+.footer {
   color: #eee;
   position: absolute;
+  right: 0;
+  left: 0;
   bottom: 0;
-  margin-left: 20px;
+  padding-bottom: 1rem;
+  /* clear:both; */
+  z-index: 20;
+  /* height: 3em; */
+/*  bottom: 0; */
+  margin-left: 1em;
+  /* margin-bottom: 0px; */
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
