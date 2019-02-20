@@ -3,7 +3,7 @@
 {% block head %}
 {% load static %}
 <title>User Details</title>
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/memberpage.css' %}">
 {% endblock %}
 {% block body %}
 <img src="{% static "accounts/datgirl2.jpg" %}" alt="Background pic" class = "loginimage">
@@ -14,7 +14,7 @@
 	<p>Your username is: {{ user.username }}</p>
 	<p>Your email is: {{ user.email }}</p>
 	<p>Your SGU account number is: {{ user.profile.account_no }}</p>
-	<p>You have had {{ user.profile.launches }} flights</p>
-	<p>You have flown for {{ user.profile.minutes_flown }} minutes</p>
+	<p>You have had {{ flights }} flights</p>
+	<p>You have flown for {{ minutes }} minutes</p>
 </div>
 {% endblock %}

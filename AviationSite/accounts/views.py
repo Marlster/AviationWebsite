@@ -101,7 +101,15 @@ def signuppage(request):
 def userdetails(request):
     if not request.user.is_authenticated:
         return render(request, 'accounts/memberpage.html')
-    return render(request, 'accounts/userdetails.html')
+    allSignups = GlidingSignup.objects.filter(member=request.user.profile)
+    noOfFlights = 0
+    noOfMinutes = 0
+    for signup in allSignups:
+        noOfFlights += signup.total_launches
+        noOfFlights += signup.total_aerotows
+        noOfMinutes += signup.total_minutes
+    args = {'flights': noOfFlights, 'minutes': noOfMinutes}
+    return render(request, 'accounts/userdetails.html', args)
 
 def settings(request):
     if not request.user.is_authenticated:
