@@ -10,10 +10,34 @@
 {% block body %}
 <img src="{% static "registration/standing5.jpeg" %}" alt="Background pic" class = "loginimage">
 <div class="loginform">
-    <h2>Sign up</h2>
+    <div class="imgcontainer">
+        <img src="{% static "registration/cropped-logo-final.png" %}" alt="Aviation Society" class="logo">
+    </div>
+    <h2 style="margin-left: 2rem">Sign up</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ form.non_field_errors }}
+        <div class="newuserformfield">
+            {{ form.username.errors }}
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="newuserformfield">
+            {{ form.email.errors }}
+            <label for="id_email">Email:</label>
+            <br>
+            {{ form.email }}
+        </div>
+        <div class="newuserformfield">
+            {{ form.password1.errors }}
+            <label for="id_password1">Password:</label>
+            {{ form.password1 }}
+        </div>
+        <div class="newuserformfield">
+            {{ form.password2.errors }}
+            <label for="id_password2">Confirm Password:</label>
+            {{ form.password2 }}
+        </div>
         <button type="submit">Sign up</button>
     </form>
 </div>

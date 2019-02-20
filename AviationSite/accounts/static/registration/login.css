@@ -1,10 +1,6 @@
  /* Bordered form */
 body, html {background-color: #111511}
 
-form {
-    border: 3px solid #111511;
-}
-
 /* Full-width inputs */
 input[type=text], input[type=password] {
     width: 100%;
@@ -31,6 +27,12 @@ button:hover {
     opacity: 0.8;
 }
 
+#id_email {
+  width: 100%;
+  margin: auto;
+  height: 2.2rem;
+}
+
 .loginimage {
     max-width: 100%;
     position: fixed;
@@ -41,11 +43,12 @@ button:hover {
 }
 
 .loginform {
+    border: 3px solid #111511;
     width: 100%;
     max-width: 500px;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
     margin: 0 auto;
-    margin-top: 15%;
+    margin-top: 10rem;
     color: #fff;
     background-color: #333733;
     position: relative;
@@ -98,6 +101,10 @@ img.logo {
     text-align: center;
     text-decoration: none;
     font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.newuserformfield {
+    margin: 1rem 2rem;
 }
 
 footer {

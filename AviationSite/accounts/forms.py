@@ -6,7 +6,7 @@ from .models import GlidingSignup, GlidingSession, Profile
 from common.utils import getcurrentdate
 
 class NewUserForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Please input a valid email address.')
+    email = forms.EmailField(max_length=254)
 
     class Meta:
         model = User
@@ -29,7 +29,7 @@ class SignupForm(forms.ModelForm):
         # hecks that the user hasn't signed up to it already
         qs = qs.exclude(attendees__user=self.user)
         # orders the sessions by date
-        qs = qs.order_by('date') 
+        qs = qs.order_by('date')
         # returns the queryset of sessions to be used as the fields of the form
         self.fields['session'].queryset = qs
 
