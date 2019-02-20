@@ -9,7 +9,7 @@
 {% block body %}
 <img src="{% static "home/tow.jpg" %}" alt="Background pic" class = "loginimage">
 <div class = "mainbody">
-	<div class = "slideshow-container" onmousemove="cancelautoslide()"> 
+	<div class = "slideshow-container" onmousemove="cancelautoslide()">
 		<div class="mySlides fade">
 		<img src="{% static "home/flying1.jpg" %}" style="width:100%">
 		</div>
@@ -28,13 +28,13 @@
 		<!-- Dot Chooser -->
 		<div class = "dot-background">
 			<div class = "slideshow-dots">
-				<span class="dot" onclick="currentSlide(1)"></span> 
-				<span class="dot" onclick="currentSlide(2)"></span> 
-				<span class="dot" onclick="currentSlide(3)"></span> 
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
 			</div>
 		</div>
 	</div>
-	<div class = "text-image-bit"> 
+	<div class = "text-image-bit">
 		<div class="text-section left">
 			<br>
 			<a class = "title-anchor-text" name="our-story" id="our-story">Our Story</a>
@@ -50,7 +50,7 @@
 			<p>{{ textsections.events.text }}</p>
 		</div>
 	</div>
-	<div class = "text-image-bit"> 
+	<div class = "text-image-bit">
 		<div class="text-section left">
 			<br>
 			<a class = "title-anchor-text" name="trials" id="trials">Trial Sessions</a>
@@ -64,6 +64,12 @@
 			<br>
 			<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
 			<p>{{ textsections.join_us.text }}</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="BNES38HS3Q3BG">
+					<input type="submit" value="✈ Get Membership" name="submit" alt="PayPal Buy Link" class = "buy-button">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+			</form>
 		</div>
 	</div>
 </div>

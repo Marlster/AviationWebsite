@@ -46,8 +46,8 @@ li {
 /* main body stuff */
 
 .mainbody {
-  max-width: 84%; 
-  margin: auto; 
+  max-width: 84%;
+  margin: auto;
   z-index: 4;
 }
 
@@ -124,7 +124,7 @@ li {
 
 .slideshow-dots {
 	position: absolute;
-	top: 4px; 
+	top: 4px;
 	left: 3px; /* might need to change this too */
 }
 
@@ -202,6 +202,21 @@ img.image-section {
   left: 0;
   opacity: 0.5;
   z-index: 0;
+}
+
+.buy-button {
+  background-color: #114;
+  color: #fff;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.buy-button:hover {
+	background-color: #112;
+    color: white;
 }
 
 /* footer stuff */
