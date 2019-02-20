@@ -126,7 +126,6 @@ def newsession(request):
         return render(request, 'accounts/memberpage.html')
     if request.method == 'POST':
         form = NewSessionForm(request.POST)
-        ses = 0/0
         if form.is_valid():
             newSession = GlidingSession(date = form.cleaned_data['date'])
             newSession.max_attendees = int(form.cleaned_data['max_attendees'])

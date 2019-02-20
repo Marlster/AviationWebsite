@@ -8,7 +8,7 @@ import django_heroku
 SECRET_KEY = os.environ['SECRET_KEY_AVSOC']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.avsoc.co.uk', '127.0.0.1', u'mmc21.host.cs.st-andrews.ac.uk','av-soc-website.herokuapp.com']
 
