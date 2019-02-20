@@ -155,10 +155,11 @@ li {
   color: #eee;
   padding-top: 20px;
   font-size: 1em;
-  padding: 8px 16px;
+  padding: 0.5rem 3rem;
   width: 70%;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
-  text-align: center;
+  text-align: justify;
+  text-align-last: center;
   background-color: #333733;
   opacity: 0.9;
 }
