@@ -27,6 +27,11 @@ button:hover {
     opacity: 0.8;
 }
 
+.signupbutton {
+  width: 94%;
+  margin: 1rem 1rem;
+}
+
 #id_email {
   width: 100%;
   margin: auto;
@@ -104,7 +109,7 @@ img.logo {
 }
 
 .newuserformfield {
-    margin: 1rem 2rem;
+    margin: 1rem 1rem;
 }
 
 footer {
