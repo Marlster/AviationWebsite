@@ -16,11 +16,11 @@
 		<p>Meeting Location: Outiside the Union</p>
 		<p>Time: 07:00 AM</p>
 		{% for driver in session.0 %}
-			<p>Driver: {{ driver.member.user.first_name }}</p>
+			<p>Driver: {{ driver.member.user.first_name|default:driver.member.user.username }}</p>
 		{% endfor %}
 		<p>Attendees:
 		{% for signup in session.1 %}
-			{{ signup.member.user.first_name }},
+			{{ signup.member.user.first_name|default:signup.member.user.username }},
 		{% endfor %}
 		</p>
 		<form action="{% url 'signup_delete' session.3 %}" method="get">

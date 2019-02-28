@@ -78,8 +78,18 @@ def signuppage(request):
             newSignup = form.save(commit=False)
             newSignup.member = request.user.profile
             newSignup.save()
-            # TODO change this to redirect to a "successful signup" page
-            return redirect('/account/home')
+            # redirects to a "successful signup" page and sends email
+            request.method = 'GET'
+            # TODO confirm email:
+            # subject = 'Gliding Session Signup COnfirmation'
+            # message = render_to_string('accounts/account_activation_email.html', {
+            #     'user': user,
+            #     'domain': current_site.domain,
+            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+            #     'token': account_activation_token.make_token(user),
+            # })
+            # user.email_user(subject, message)
+            return signupconfirm(request)
     # otherwise just returns the form
     else:
         form = SignupForm(user=request.user)
@@ -97,6 +107,11 @@ def signuppage(request):
     pastSessions = GlidingSession.objects.exclude(date__gte=getcurrentdate()).filter(attendees__user=request.user).filter(is_cancelled=False)
     args = {'form': form, 'sessions': cSessions, 'past_sessions': pastSessions}
     return render(request, 'accounts/glidingsignup.html', args)
+
+def signupconfirm(request):
+    if not request.user.is_authenticated:
+        return render(request, 'accounts/memberpage.html')
+    return render(request, 'accounts/signupconfirm.html')
 
 def userdetails(request):
     if not request.user.is_authenticated:

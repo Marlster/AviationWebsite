@@ -27,7 +27,7 @@ urlpatterns = [
     # choosesession redirects to the admin form for choosing a past session to fill
     # which then redirects to the admin form for filling in a past session's gliding times
     url(r'^choosesession$', views.choosesession),
-    # used for the fill session form 
+    # used for the fill session form
     path('fillsession/<int:pk>', views.fillsession, name="fill_session"),
     # updatehome redirects to the admin form for updating the text on the home page
     url(r'^updatehome$', views.newsession),

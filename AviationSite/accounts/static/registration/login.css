@@ -112,6 +112,10 @@ img.logo {
     margin: 1rem 1rem;
 }
 
+.textbit {
+  margin: auto;
+}
+
 footer {
   color: #eee;
   position: absolute;
