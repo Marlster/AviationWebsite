@@ -4,7 +4,8 @@ import os
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY_AVSOC']
+# SECRET_KEY = os.environ['SECRET_KEY_AVSOC']
+SECRET_KEY = 'G03AxYvyC~li0{OFt[<ruy%[fOr2C?-IqSa~dFDG8Jxn--1.:TDT48,x>^33K{p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

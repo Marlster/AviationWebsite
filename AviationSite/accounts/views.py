@@ -81,7 +81,7 @@ def signuppage(request):
             # redirects to a "successful signup" page and sends email
             request.method = 'GET'
             # TODO confirm email:
-            # subject = 'Gliding Session Signup COnfirmation'
+            # subject = 'Gliding Session Signup Confirmation'
             # message = render_to_string('accounts/account_activation_email.html', {
             #     'user': user,
             #     'domain': current_site.domain,
