@@ -1,6 +1,11 @@
 * {box-sizing:border-box}
 
-body, html {margin: 0; padding: 0; background-color: #111511}
+body, html {
+  margin: 0; 
+  padding: 0; 
+  background-color: #111511;
+  width: auto !important;  /* Firefox will set width as auto */
+}
 
 /* navbar stuff */
 
@@ -46,7 +51,9 @@ li {
 /* main body stuff */
 
 .mainbody {
-  max-width: 84%;
+  width: 90%;
+  max-width: 1200px;
+  min-width: 800px;
   margin: auto;
   z-index: 4;
 }
@@ -166,6 +173,7 @@ li {
 
 .text-image-bit {
   display: flex;
+  min-height: 50vh;
   flex-flow: row wrap;
 }
 
@@ -218,6 +226,17 @@ img.image-section {
 .buy-button:hover {
 	background-color: #112;
     color: white;
+}
+
+/* table stuff */
+
+table {
+  border: 1px solid #111511;
+}
+
+th, td{
+  border: 1px solid #111511;
+  text-align: center;
 }
 
 /* footer stuff */
