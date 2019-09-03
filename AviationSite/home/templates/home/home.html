@@ -44,11 +44,27 @@
 		<img src="{% static "home/long4.jpeg" %}" class = "image-section right">
 	</div>
 	<div class = "text-image-bit">
-		<img src="{% static "home/long5.jpg" %}" class = "image-section left">
+		<img src="{% static "home/piper1.jpg" %}" class = "image-section left">
 		<div class="text-section right">
 			<br>
 			<a class = "title-anchor-text" name="events" id="events">Events</a>
 			<p>{{ textsections.events.text|linebreaks }}</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="443ZMJUYEG5D8">
+				<table style="margin: auto;">
+					<tr><td style="padding: 0.5rem"><input type="hidden" name="on0" value="Membership Status">Membership Status</td></tr>
+					<tr><td><select name="os0">
+						<option value="Member">Member £49.00</option>
+						<option value="Non-member">Non-member £59.00</option>
+					</select></td></tr>
+				</table>
+				<br>
+				<input type="hidden" name="currency_code" value="GBP">
+				<input type="submit" value="✈ Book Your Space!" name="submit" alt="PayPal Buy Link" class = "buy-button">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+			</form>			
+			<p style="font-size:9px">Please note this event is weather dependent.</p>
 		</div>
 	</div>
 	<div class = "text-image-bit">
@@ -81,16 +97,16 @@
 		<img src="{% static "home/long3.jpg" %}" class = "image-section right">
 	</div>
 	<div class = "text-image-bit">
-		<img src="{% static "home/long1.jpg" %}" class = "image-section left">
+		<img src="{% static "home/long5.jpg" %}" class = "image-section left">
 		<div class="text-section right">
 			<br>
 			<a class = "title-anchor-text" name="join-us" id="join-us">Join Us!</a>
 			<p>{{ textsections.join_us.text|linebreaks }}</p>
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-					<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="hosted_button_id" value="BNES38HS3Q3BG">
-					<input type="submit" value="✈ Get Membership" name="submit" alt="PayPal Buy Link" class = "buy-button">
-					<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="BNES38HS3Q3BG">
+				<input type="submit" value="✈ Get Membership" name="submit" alt="PayPal Buy Link" class = "buy-button">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
 			</form>
 		</div>
 	</div>

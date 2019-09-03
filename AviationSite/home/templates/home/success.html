@@ -1,0 +1,23 @@
+{% extends 'base_home.html' %}
+
+{% block head %}
+{% load staticfiles %}
+<title>Order Complete</title>
+<link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+{% endblock %}
+{% block body %}
+<img src="{% static "home/tow.jpg" %}" alt="Background pic" class = "loginimage">
+<div class = "mainbody">
+	<div class = "text-image-bit">
+		<div class="text-section left">
+			<br>
+			<br>
+			<a class = "title-anchor-text" name="our-story" id="our-story">Successful Purchase</a>
+			<br>
+			<br>
+			<p>Thank you for choosing to fly with us! We will email you all the details soon.</p>
+		</div>
+		<img src="{% static "home/piper1.jpg" %}" class = "image-section right">
+	</div>
+</div>
+{% endblock %}

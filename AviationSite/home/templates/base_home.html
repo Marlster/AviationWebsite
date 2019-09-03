@@ -9,11 +9,11 @@
 	<title>base</title>
 	{% endblock %}
 </head>
-<body onload="cycleSlides();">
+<body>
 	<div style="padding-left: 8%; padding-right: 8%; height: 10%">
 		<div style="position: absolute; padding: 20px 0; z-index: 2">
 			<a href="{{ HTTP_HOST }}/home/">
-				<img src="{% static "registration/cropped-logo-final.png" %}" alt="AvSoc" class="logo" height=100px>
+				<img src="{% static "registration/cropped-logo-final.png" %}" onload="cycleSlides();" alt="AvSoc" class="logo" height=100px>
 			</a>
 		</div>
 		<div style="padding: 50px 0; margin-left: 120px">
@@ -38,7 +38,7 @@
 	{% block body %}
 	{% endblock %}
 	<footer style="z-index: 10">
-		<p style="margin-left: 100px"> Website designed & created by Marley Chinn with some CSS help from Oscar Raunio © 2019</p>
+		<p style="margin-left: 100px; font-size: 0.8em"> Website designed & created by Marley Chinn © 2019</p>
 <!-- 		<p style="margin-left: 100px">Found a bug? <a href="{{ HTTP_HOST }}/reportabug/">Report it here</a></p> -->
 	</footer>
 </body>

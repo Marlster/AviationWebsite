@@ -8,3 +8,7 @@ def home(request):
     currentVersion = HomepageVersion.objects.get(current_version = True)
     args = {"textsections": currentVersion, "user": request.user}
     return render(request, 'home/home.html', args)
+
+def success(request):
+    args = {"user": request.user}
+    return render(request, 'home/success.html', args)
