@@ -177,6 +177,13 @@ li {
   flex-flow: row wrap;
 }
 
+.anchor {
+  display: block;
+  height: 115px; /*same height as header*/
+  margin-top: -115px; /*same height as header*/
+  visibility: hidden;
+}
+
 .title-anchor-text {
   font-size: 2em;
   color: #eee;
