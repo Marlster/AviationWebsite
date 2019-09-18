@@ -191,13 +191,13 @@ li {
 
 img.image-section {
   object-fit: cover;
-  max-height: 50vh;
+  max-height: 75vh;
   max-width: 30%;
   vertical-align: top;
   display: inline;
 }
 
-img.special {
+.special {
   object-fit: cover;
   max-height: 91vh;
   max-width: 25%;
