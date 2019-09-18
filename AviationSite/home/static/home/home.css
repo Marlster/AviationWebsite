@@ -197,6 +197,14 @@ img.image-section {
   display: inline;
 }
 
+img.special {
+  object-fit: cover;
+  max-height: 91vh;
+  max-width: 25%;
+  vertical-align: top;
+  display: inline;
+}
+
 .left {
   flex: 1;
   margin: 3px;

@@ -12,3 +12,7 @@ def home(request):
 def success(request):
     args = {"user": request.user}
     return render(request, 'home/success.html', args)
+
+def trials(request):
+    args = {"user": request.user}
+    return render(request, 'home/trials.html', args)

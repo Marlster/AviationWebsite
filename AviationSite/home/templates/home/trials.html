@@ -1,0 +1,46 @@
+{% extends 'base_home.html' %}
+
+{% block head %}
+{% load staticfiles %}
+<title>Trial Sessions</title>
+<link rel="stylesheet" type="text/css" href="{% static 'home/home.css' %}">
+{% endblock %}
+{% block body %}
+<img src="{% static "home/tow.jpg" %}" alt="Background pic" class = "loginimage">
+<div class = "mainbody">
+	<div class = "text-image-bit">
+		<div class="text-section left">
+			<br>
+			<br>
+			<a class = "title-anchor-text" name="our-story" id="our-story">Trial Sessions</a>
+			<br>
+			<br>
+			<p>We are running trial sessions for anyone who is interested in gliding and would like to try it out. The event includes transport to the airfield and a 20-30 minute flight with an instructor. A full safety brief will be given and you'll also be shown the various other ground handling activities that take place when gliding.</p>
+			<p>The cost of a session is only £35! Unfortunately, space is very limited.</p>
+			<p>Don't miss this great chance to take to the skies!</p>
+			<form style="margin: 2em" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="P33SXTGDMAL6C">
+				<table style="margin: auto;">
+					<tr>
+						<td class="event"><input type="hidden" name="on0" value="Date">Date</td>
+						<td>
+							<select name="os0">
+								<option value="Saturday 21st September">Saturday 21st September </option>
+								<option value="Sunday 22nd September">Sunday 22nd September </option>
+								<option value="Saturday 28th September">Saturday 28th September </option>
+								<option value="Sunday 29th September">Sunday 29th September </option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<input type="submit" value="✈ Book Your Space!" name="submit" alt="PayPal Buy Link" class = "buy-button">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			<p style="font-size:10px">Please note that depending on the weather, we may have to reschedule some sessions to a later date.</p>	
+		</div>
+		<img src="{% static "home/fly1.jpg" %}" class = "special right">
+	</div>
+</div>
+{% endblock %}
