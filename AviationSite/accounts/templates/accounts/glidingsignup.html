@@ -14,7 +14,7 @@
 	{% for session in sessions %}
 		<h2>{{ session.2 }}</h2>
 		<p>Meeting Location: Outiside the Union</p>
-		<p>Time: 07:00 AM</p>
+		<p>Time: 07:30 AM</p>
 		{% for driver in session.0 %}
 			<p>Driver: {{ driver.member.user.first_name|default:driver.member.user.username }}</p>
 		{% endfor %}
