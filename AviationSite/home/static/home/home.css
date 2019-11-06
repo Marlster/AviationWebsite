@@ -191,7 +191,7 @@ li {
 
 img.image-section {
   object-fit: cover;
-  max-height: 75vh;
+  max-height: 65vh;
   max-width: 30%;
   vertical-align: top;
   display: inline;
